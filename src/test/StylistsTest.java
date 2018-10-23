@@ -27,37 +27,37 @@ public class TaskTest {
         @Test
         public void getName_StylistsInstantiatesWithFName_Sharon() {
             Stylists testStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
-            assertEquals("Home", testStylists.getFName());
+            assertEquals("Sharon", testStylists.getFName());
         }
 
         Test
         public void getName_StylistsInstantiatesWithMiddleName_Sharon() {
             Stylists testStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
-            assertEquals("Home", testStylists.getmiddleName());
+            assertEquals("Mumbi", testStylists.getmiddleName());
         }
 
         Test
         public void getName_StylistsInstantiatesWithLName_Sharon() {
             Stylists testStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
-            assertEquals("Home", testStylists.getLName());
+            assertEquals("Mwangi", testStylists.getLName());
         }
 
         Test
         public void getName_StylistsInstantiatesWithEmail_Sharon() {
             Stylists testStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
-            assertEquals("Home", testStylists.getEmail());
+            assertEquals("sharonmwangi@gmail.com", testStylists.getEmail());
         }
 
         Test
         public void getName_StylistsInstantiatesWithAge_Sharon() {
             Stylists testStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
-            assertEquals("Home", testStylists.getAge());
+            assertEquals("25", testStylists.getAge());
         }
 
         Test
         public void getName_StylistsInstantiatesWithAddress_Sharon() {
             Stylists testStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
-            assertEquals("Home", testStylists.getAddress());
+            assertEquals("Nairobi", testStylists.getAddress());
         }
 
         @Test
