@@ -56,12 +56,13 @@ public class Clients {
         return id;
     }
 
-    public List<Stylists> getStylists() {
+    public static Clients find(int id) {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM Stylists where ClientsId=:id";
-            return con.createQuery(sql)
-                    .addParameter("id", this.id)
-                    .executeAndFetch(Stylists.class);
+            String sql = "SELECT * FROM Clients where Id=:id";
+            Clients Clients = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Clients.class);
+                return Clients;
         }
     }
 
@@ -96,6 +97,8 @@ public class Clients {
                     .executeUpdate()
                     .getKey();
         }
+
+
     }
 
 }
