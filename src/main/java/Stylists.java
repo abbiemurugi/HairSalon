@@ -70,21 +70,22 @@ public class Stylists {
             return false;
         } else {
             Stylists newStylists = (Stylists) otherStylists;
-            return this.getFName().equals(newStylists.getFName());
-            this.getMiddleName().equals(newStylists.getMiddleName());
-            this.getLname().equals(newStylists.getLname());
-            this.getEmail().equals(newStylists.getEmail());
-            this.getAge().equals(newStylists.getAge());
-            this.getAddress().equals(newStylists.getAddress());
+            return this.getFName().equals(newStylists.getFName()) &&
+            this.getMiddleName().equals(newStylists.getMiddleName()) &&
+            this.getLname().equals(newStylists.getLname()) &&
+            this.getEmail().equals(newStylists.getEmail()) &&
+            this.getAge().equals(newStylists.getAge()) &&
+            this.getAddress().equals(newStylists.getAddress()) &&
 
-//            this.getId() == newStylists.getId();
+            this.getId() == newStylists.getId();
         }
     }
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO Stylists (fname, middlename, lname, Email, Age, Address ) VALUES (:fname, :middlename, :lname, :Email, :Age, :Address)";
-            con.createQuery(sql)
+            this.id = (int) con.createQuery(sql,true)
+
                     .addParameter("fname", this.fname)
                     .addParameter("middlename", this.middlename)
                     .addParameter("lname", this.lname)
@@ -92,7 +93,7 @@ public class Stylists {
                     .addParameter("Age", this.Age)
                     .addParameter("Address", this.Address)
                     .executeUpdate();
-//                    .getKey();
+                    .getKey();
         }
     }
 
