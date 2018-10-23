@@ -69,9 +69,34 @@ public class TaskTest {
         public void all_returnsAllInstancesOfStylists_true() {
             Stylists firstStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
             firstStylists.save();
-            Stylists secondStylists = new Task("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
+            Stylists secondStylists = new Task("Mercy", "Musenya", "Wanjiku", "mercymusenya@gmail.com", "22", "Machakos");
             secondStylists.save();
             assertEquals(true, Stylists.all().get(0).equals(firstStylists));
             assertEquals(true, Stylists.all().get(1).equals(secondStylists));
         }
+
+        @Test
+        public void save_assignsIdToObject() {
+            Stylists myStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
+            myStylists.save();
+            Stylists savedStylists = Stylists.all().get(0);
+            assertEquals(myStylists.getId(), savedStylists.getId());
+        }
+
+        @Test
+        public void getId_StylistsInstantiateWithAnID() {
+            Stylists myStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
+            myStylists.save();
+            assertTrue(myStylists.getId() > 0);
+        }
+
+        @Test
+        public void find_returnsStylistsWithSameId_secondStylists() {
+            Stylists firstStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
+            firstStylists.save();
+            Stylists secondStylists = new Task("Mercy", "Musenya", "Wanjiku", "mercymusenya@gmail.com", "22", "Machakos");
+            secondStylists.save();
+            assertEquals(Stylists.find(secondStylists.getId()), secondStylists);
+        }
+
     }
