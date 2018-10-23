@@ -1,0 +1,23 @@
+<h1>clients list!</h1>
+
+#if ($clients)
+  <p>Current clients:</p>
+  <p>$clients.getDescription()</p>
+#else
+  <p>No clients!</p>
+#end
+
+<p>Add a new clients:</p>
+
+<form action="/clients" method="post">
+ <form class="text-center border border-light p-5">
+                 <h3>Stylists</h3>
+                 <input type="text" id="fname" class="form-control mb-4" placeholder="First Name" name="fname">
+                 <input type="text" id="middlename" class="form-control mb-4" placeholder="Middle Name" name="middlename">
+                 <input type="text" id="lname" class="form-control mb-4" placeholder="Last Name" name="lname">
+                 <input type="text" id="email" class="form-control mb-4" placeholder="Email" name="email">
+                 <input type="text" id="age" class="form-control mb-4" placeholder="Age Name" name="age">
+                 <input type="text" id="address" class="form-control mb-4" placeholder="Address Name" name="address">
+             </form>
+  <button type="submit" class="btn btn-default">Add stylist/button>
+</form>
