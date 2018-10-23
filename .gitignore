@@ -30,4 +30,6 @@ build/
 .gradle/
 .idea/
 out/
+bin
+bin/
 
