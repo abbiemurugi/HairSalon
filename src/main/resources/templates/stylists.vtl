@@ -1,0 +1,17 @@
+<h1>stylists list!</h1>
+
+#if ($stylists)
+  <p>Current stylists:</p>
+  <p>$stylists.getDescription()</p>
+#else
+  <p>No stylists!</p>
+#end
+
+<p>Add a new stylists:</p>
+
+<form action="/stylists" method="post">
+  <label for="description">Task Description</label>
+  <input id="description" name="description" type="text">
+
+  <button type="submit" class="btn btn-default">Add stylist/button>
+</form>
