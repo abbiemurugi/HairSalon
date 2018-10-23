@@ -1,6 +1,7 @@
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.util.Arrays;
 
 public class ClientsTest {
 
@@ -59,11 +60,23 @@ public class ClientsTest {
     }
 
     @Test
-    public void find_returnsCategoryWithSameId_secondCategory() {
-        Category firstCategory = new Category("Home");
-        firstCategory.save();
-        Category secondCategory = new Category("Work");
-        secondCategory.save();
-        assertEquals(Category.find(secondCategory.getId()), secondCategory);
+    public void find_returnsClientsWithSameId_secondClients() {
+        Clients firstClients = new Clients("Jane", "Muthoni", "Mwangi", "janemuthoni@gmail.com", "40", "Nairobi");
+        firstClients.save();
+        Clients secondClients = new Clients("Jack", "Ochieng", "Otieno", "jackochieng@gmail.com", "36", "Nairobi");
+        secondClients.save();
+        assertEquals(Clients.find(secondClients.getId()), secondClients);
     }
+
+//    @Test
+//    public void getTasks_retrievesALlStylistsFromDatabase_StylistsList() {
+//        Clients myClients = new Clients("Jane", "Muthoni", "Mwangi", "janemuthoni@gmail.com", "40", "Nairobi");
+//        myClients.save();
+//        Stylists firstStylists = new Stylists("Rose", "Karanu", "Karis", "rosekaris@gmail.com", "28", "Kiambu", myClients.getId());
+//        firstStylists.save();
+//        Stylists secondStylists = new Stylists("Cate", "Kalolia", "Chali", "catekalolia@gmail.com", "23", "South-B", myClients.getId());
+//        secondStylists.save();
+//        Stylists[] Stylists = new Stylists[] { firstStylists, secondStylists };
+//        assertTrue(myClients.getStylists().containsAll(Arrays.asList(Stylists)));
+//    }
 }
