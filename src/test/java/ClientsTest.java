@@ -45,9 +45,25 @@ public class ClientsTest {
 
     @Test
     public void save_assignsIdToObject() {
-        Category myCategory = new Category("Household chores");
-        myCategory.save();
-        Category savedCategory = Category.all().get(0);
-        assertEquals(myCategory.getId(), savedCategory.getId());
+        Clients myClients = new Clients("Jane", "Muthoni", "Mwangi", "janemuthoni@gmail.com", "40", "Nairobi");
+        myClients.save();
+        Clients savedClients = Clients.all().get(0);
+        assertEquals(myClients.getId(), savedClients.getId());
+    }
+
+    @Test
+    public void getId_ClientsInstantiateWithAnId_1() {
+        Clients testClients = new Clients("Jane", "Muthoni", "Mwangi", "janemuthoni@gmail.com", "40", "Nairobi");
+        testClients.save();
+        assertTrue(testClients.getId() > 0);
+    }
+
+    @Test
+    public void find_returnsCategoryWithSameId_secondCategory() {
+        Category firstCategory = new Category("Home");
+        firstCategory.save();
+        Category secondCategory = new Category("Work");
+        secondCategory.save();
+        assertEquals(Category.find(secondCategory.getId()), secondCategory);
     }
 }
