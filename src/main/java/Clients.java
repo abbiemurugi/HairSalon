@@ -56,13 +56,12 @@ public class Clients {
         return id;
     }
 
-    public static Clients find(int id) {
-        try (Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM Clients where id=:id";
-            Clients Clients = con.createQuery(sql)
-                    .addParameter("id", id)
-                    .executeAndFetchFirst(Clients.class);
-            return Clients;
+    public List<Stylists> getStylists() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM Stylists where ClientsId=:id";
+            return con.createQuery(sql)
+                    .addParameter("id", this.id)
+                    .executeAndFetch(Stylists.class);
         }
     }
 
@@ -83,6 +82,20 @@ public class Clients {
         }
     }
 
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO Clients (FirstName, middlename, LastName, Email, Age, Address ) VALUES (:FirstName, :middlename, :LastName, :Email, :Age, :Address)";
+            this.id = (int) con.createQuery(sql,true)
 
+                    .addParameter("fname", this.firstname)
+                    .addParameter("middlename", this.middlename)
+                    .addParameter("LastName", this.lastname)
+                    .addParameter("Email", this.Email)
+                    .addParameter("Age", this.Age)
+                    .addParameter("Address", this.Address)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
 
 }
