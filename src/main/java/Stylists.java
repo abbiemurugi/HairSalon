@@ -83,7 +83,7 @@ public class Stylists {
 
     public void save() {
         try(Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO Stylists (fname, middlename, lname, Email, Age, Address ) VALUES (:description)";
+            String sql = "INSERT INTO Stylists (fname, middlename, lname, Email, Age, Address ) VALUES (:fname, :middlename, :lname, :Email, :Age, :Address)";
             con.createQuery(sql)
                     .addParameter("fname", this.fname)
                     .addParameter("middlename", this.middlename)
