@@ -79,7 +79,7 @@ public class TaskTest {
 
         @Test
         public void save_assignsIdToObject() {
-            Stylists myStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
+            Stylists myStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi",1);
             myStylists.save();
             Stylists savedStylists = Stylists.all().get(0);
             assertEquals(myStylists.getId(), savedStylists.getId());
@@ -87,18 +87,28 @@ public class TaskTest {
 
         @Test
         public void getId_StylistsInstantiateWithAnID() {
-            Stylists myStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
+            Stylists myStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi",1);
             myStylists.save();
             assertTrue(myStylists.getId() > 0);
         }
 
         @Test
         public void find_returnsStylistsWithSameId_secondStylists() {
-            Stylists firstStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
+            Stylists firstStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi", 1);
             firstStylists.save();
-            Stylists secondStylists = new Task("Mercy", "Musenya", "Wanjiku", "mercymusenya@gmail.com", "22", "Machakos");
+            Stylists secondStylists = new Task("Mercy", "Musenya", "Wanjiku", "mercymusenya@gmail.com", "22", "Machakos", );
             secondStylists.save();
             assertEquals(Stylists.find(secondStylists.getId()), secondStylists);
+        }
+
+        @Test
+        public void save_savesClientsIdIntoDB_true() {
+            Clients myClients = new Clients("James", "Kariuki", "Nyaga", "jameskariuki@gmail.com", "30", "Thika");
+            myClients.save();
+            Stylists myStylists = new Stylists("Rose", "Karanu", "Karis", "rosekaris@gmail.com", "28", "Kiambu", myClients.getId());
+            myStylists.save();
+            Stylists savedStylists = Stylists.find(myStylists.getId());
+            assertEquals(savedStylists.getClientsId(), myClients.getId());
         }
 
     }
