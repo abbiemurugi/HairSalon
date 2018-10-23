@@ -1,1 +1,29 @@
-<p>hello</p>
+<div class="container">
+<h1>Beauty Salon</h1>
+    <div class="row">
+    <div class="col-md-6">
+            <form class="text-center border border-light p-5">
+                <h3>Stylists</h3>
+                <input type="text" id="fname" class="form-control mb-4" placeholder="First Name" name="fname">
+                <input type="text" id="middlename" class="form-control mb-4" placeholder="Middle Name" name="middlename">
+                <input type="text" id="lname" class="form-control mb-4" placeholder="Last Name" name="lname">
+                <input type="text" id="email" class="form-control mb-4" placeholder="Email" name="email">
+                <input type="text" id="age" class="form-control mb-4" placeholder="Age Name" name="age">
+                <input type="text" id="address" class="form-control mb-4" placeholder="Address Name" name="address">
+            </form>
+            </div>
+     <div class="col-md-6">
+            <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
+
+            #foreach($stylists in $stylists)
+            <div class="stylists">
+            <h4>$stylist.getFirst_name() $stylist.getMiddle_name() $stylist.getLast_name()</h4>
+            <p>$stylist.getEmail()</p>
+            <p>$stylist.getAge()</p>
+            <p>$stylist.getAddress()</p>
+
+            <button type="submit" class="btn btn-default">Delete</button>
+            </div>
+            #end
+    </div>
+</div>
