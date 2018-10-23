@@ -92,7 +92,7 @@ public class Stylists {
                     .addParameter("Email", this.Email)
                     .addParameter("Age", this.Age)
                     .addParameter("Address", this.Address)
-                    .executeUpdate();
+                    .executeUpdate()
                     .getKey();
         }
     }
