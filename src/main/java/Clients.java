@@ -55,4 +55,34 @@ public class Clients {
     public int getId() {
         return id;
     }
+
+    public static Clients find(int id) {
+        try (Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM Clients where id=:id";
+            Clients Clients = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Clients.class);
+            return Clients;
+        }
+    }
+
+    @Override
+    public boolean equals(Object otherClients) {
+        if (!(otherClients instanceof Clients)) {
+            return false;
+        } else {
+            Clients newClients = (Clients) otherClients;
+            return this.getFirstName().equals(newClients.getFirstName()) &&
+                    this.getMiddleName().equals(newClients.getMiddleName()) &&
+                    this.getLastName().equals(newClients.getLastName()) &&
+                    this.getEmail().equals(newClients.getEmail()) &&
+                    this.getAge().equals(newClients.getAge()) &&
+                    this.getAddress().equals(newClients.getAddress()) &&
+
+                    this.getId() == newClients.getId();
+        }
+    }
+
+
+
 }
