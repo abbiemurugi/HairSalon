@@ -1,7 +1,6 @@
 import org.sql2o.Connection;
 
 import java.util.List;
-import java.util.ArrayList;
 
 public class Clients {
     private String firstname;
