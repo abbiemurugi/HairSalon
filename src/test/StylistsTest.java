@@ -64,4 +64,14 @@ public class TaskTest {
             myStylists.save();
             assertTrue(Stylists.all().get(0).equals(myStylists));
         }
+
+        @Test
+        public void all_returnsAllInstancesOfStylists_true() {
+            Stylists firstStylists = new Stylists("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
+            firstStylists.save();
+            Stylists secondStylists = new Task("Sharon", "Mumbi", "Mwangi", "sharonmwangi@gmail.com", "25", "Nairobi");
+            secondStylists.save();
+            assertEquals(true, Stylists.all().get(0).equals(firstStylists));
+            assertEquals(true, Stylists.all().get(1).equals(secondStylists));
+        }
     }
