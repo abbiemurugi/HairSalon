@@ -2,16 +2,17 @@
 
 #if ($clients)
   <p>Current clients:</p>
-  <p>$clients.getDescription()</p>
+  <p>$clients.getName()</p>
 #else
   <p>No clients!</p>
 #end
 
 <p>Add a new clients:</p>
-
+<div class="row">
+<div class="col-md-6">
 <form action="/clients" method="post">
  <form class="text-center border border-light p-5">
-                 <h3>Stylists</h3>
+                 <h3>clients</h3>
                  <input type="text" id="fname" class="form-control mb-4" placeholder="First Name" name="fname">
                  <input type="text" id="middlename" class="form-control mb-4" placeholder="Middle Name" name="middlename">
                  <input type="text" id="lname" class="form-control mb-4" placeholder="Last Name" name="lname">
@@ -19,5 +20,21 @@
                  <input type="text" id="age" class="form-control mb-4" placeholder="Age Name" name="age">
                  <input type="text" id="address" class="form-control mb-4" placeholder="Address Name" name="address">
              </form>
-  <button type="submit" class="btn btn-default">Add stylist/button>
+  <button type="submit" class="btn btn-default">Add client</button>
+
+  <div class="col-md-6">
+  <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
+  #foreach($clients in $clients)
+              <div class="clients">
+              <h4>$clients.getFirst_name() $clients.getMiddle_name() $clients.getLast_name()</h4>
+              <p>$clients.getEmail()</p>
+              <p>$clients.getAge()</p>
+              <p>$clients.getAddress()</p>
+
+              <button type="submit" class="btn btn-default">Delete</button>
+              </div>
+              #end
+
 </form>
+</div>
+</div>
