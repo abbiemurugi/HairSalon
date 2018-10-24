@@ -20,7 +20,7 @@ public class Stylists {
     }
 
     public static List<Stylists> all() {
-        String sql = "SELECT id, description FROM Stylists";
+        String sql = "SELECT * FROM Stylists";
         try(Connection con = DB.sql2o.open()) {
             return con.createQuery(sql).executeAndFetch(Stylists.class);
         }
@@ -56,7 +56,7 @@ public class Stylists {
 
     public static Stylists find(int id) {
         try (Connection con = DB.sql2o.open()) {
-            String sql = "SELECT * FROM stylists where id=:id";
+            String sql = "SELECT * FROM Stylists where id=:id";
             Stylists Stylists = con.createQuery(sql)
                     .addParameter("id", id)
                     .executeAndFetchFirst(Stylists.class);
